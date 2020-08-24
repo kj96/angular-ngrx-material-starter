@@ -1,0 +1,113 @@
+@import '@common/scss/common';
+
+// lg: screen and (min-width: 1280px)
+body.bp-lg {
+  #dashboard {
+      .content {
+        flex-flow: row wrap;
+
+        .top-row {
+          display: flex;
+          flex: 100%;
+          flex-direction: row;
+
+          .dashboard-node-info {
+            flex: 20%;
+          }
+
+          .dashboard-kpis {
+            flex: 80%;
+          }
+        }
+
+        .dashboard-map,
+        .dashboard-table {
+          width: 50%;
+          min-height: 40%;
+        }
+      }
+    }
+}
+
+body.bp-md {
+  #dashboard {
+    .content {
+      flex-flow: row wrap;
+
+      .top-row {
+        display: flex;
+        flex: 100%;
+        flex-direction: row;
+
+        .dashboard-node-info {
+          flex: 25%;
+        }
+
+        .dashboard-kpis {
+          flex: 75%;
+        }
+      }
+
+      .dashboard-map,
+      .dashboard-table {
+        width: 50%;
+        min-height: 40%;
+      }
+    }
+  }
+}
+
+// sm: (max-width: 599px)
+body.bp-sm {
+  #dashboard {
+    .content {
+      flex-flow: row wrap;
+
+      .top-row {
+        display: flex;
+        flex: 100%;
+        flex-flow: row wrap;
+
+        .dashboard-node-info,
+        .dashboard-kpis{
+          flex: 100%;
+        }
+      }
+
+      .dashboard-map,
+      .dashboard-table {
+        flex: 100%;
+        min-height: 440px;
+
+      }
+    }
+  }
+}
+
+#dashboard {
+  .content {
+    display: flex;
+    padding: 0.8em;
+
+    ktc-card {
+      padding: 0.2em;
+    }
+
+    .dashboard-kpis,
+    .dashboard-node-info {
+      min-height: 240px;
+    }
+
+    .dashboard-map {
+
+      .card {
+        background: transparent;
+        padding: 0;
+      }
+
+      .card-content {
+        padding: 0;
+      }
+    }
+  }
+}
