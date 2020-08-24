@@ -1,0 +1,26 @@
+<!-- HEADER -->
+<div class="navbar-top" [ngClass]="(customBackgroundColor$ | async) && (headerBackground$ | async)">
+  <div class="top-row">
+    <!-- LOGO -->
+    <div class="logo">
+      <img class="logo-icon" src="assets/logos/android.svg">
+    </div>
+    <!-- / LOGO -->
+
+    <!-- BUTTONS -->
+    <div class="buttons">
+      <button mat-icon-button class="toggle-sidebar-folded secondary-text" (click)="toggleSidebarFolded()">
+        <mat-icon class="s-28">menu</mat-icon>
+      </button>
+
+      <button mat-icon-button class="toggle-sidebar-opened" (click)="toggleSidebarOpened()">
+        <mat-icon class="s-28">arrow_back</mat-icon>
+      </button>
+    </div>
+    <!-- / BUTTONS -->
+  </div>
+</div>
+
+<!-- NAVBAR -->
+<at-layout-navigation-navbar class="" [pages] = "navBar$ | async"></at-layout-navigation-navbar>
+<!-- / NAVBAR -->

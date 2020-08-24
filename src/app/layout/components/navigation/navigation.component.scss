@@ -1,0 +1,120 @@
+@import '@common/scss/common';
+
+at-sidebar {
+  &.navbar-sidebar {
+    overflow: hidden;
+
+    &.folded:not(.unfolded) {
+      at-navigation {
+        .navbar-top {
+          justify-content: center;
+
+          .top-row {
+            display: flex;
+            flex-direction: row;
+            padding: 12px 0;
+            justify-content: center;
+          }
+        }
+
+        .navbar-scroll-container {
+          .navbar-wrapper {
+            padding-top: 0;
+
+            // Material 2 specific style
+            .material2 {
+              .nav-item {
+                .nav-link {
+
+
+                  border-radius: 20px;
+                  margin: 4px 12px;
+                  padding: 4px 12px;
+
+                  &.active {
+                    @include mat-elevation(4);
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+at-navigation {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+
+  .navbar-top {
+    display: flex;
+    flex-flow: row wrap;
+    flex: 1 0 auto;
+    align-items: stretch;
+
+    > .top-row {
+      padding: 12px 12px 12px 20px;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      flex: 100%;
+
+      .logo {
+        display: flex;
+        align-items: center;
+
+        .logo-icon {
+          max-width: 200px;
+          height: 32px;
+        }
+
+        .logo-text {
+          margin-left: 4px;
+          font-size: 24px;
+          font-weight: 600;
+        }
+      }
+
+      .buttons {
+        display: flex;
+        align-items: center;
+
+        .toggle-sidebar-opened {
+          @include media-breakpoint('gt-md') {
+            display: none;
+          }
+        }
+
+        .toggle-sidebar-folded {
+          @include media-breakpoint('lt-lg') {
+            display: none;
+          }
+        }
+      }
+    }
+
+    at-common-search-bar {
+      flex: 100%;
+    }
+  }
+
+  .navbar-scroll-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+
+    .as-split-area {
+      overflow: hidden !important;
+    }
+
+    .navbar-wrapper {
+      .ps-content {
+        height: 100%;
+      }
+    }
+  }
+}

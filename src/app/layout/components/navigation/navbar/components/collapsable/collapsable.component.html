@@ -1,0 +1,37 @@
+<ng-container *ngIf="!item.hidden">
+  <!-- FOLDED -->
+  <ng-container *ngIf="!(isFolded$ | async)">
+    <a class="nav-link" [ngClass]="item.classes" (click)="toggleOpen($event)">
+      <ng-container *ngTemplateOutlet="itemContent"></ng-container>
+    </a>
+
+    <div class="children" [@slideInOut]="isOpen">
+      <ng-container *ngFor="let item of item.children">
+        <vertical-item *ngIf="item.type == 'item'" [item]="item"></vertical-item>
+        <vertical-collapsable *ngIf="item.type == 'collapsable'" [item]="item"></vertical-collapsable>
+        <vertical-group *ngIf="item.type == 'group'" [item]="item"></vertical-group>
+      </ng-container>
+    </div>
+  </ng-container>
+  <!-- FOLDED -->
+
+  <!-- UNFOLDED -->
+  <ng-container *ngIf="(isFolded$ | async)">
+
+  </ng-container>
+  <!-- / UNFOLDED -->
+</ng-container>
+
+<ng-template #itemContent>
+  <mat-icon class="nav-link-icon" *ngIf="item.icon">{{item.icon}}</mat-icon>
+  <span class="nav-link-title" [translate]="item.translate"></span>
+  <span
+    class="nav-link-badge"
+    *ngIf="item.badge"
+    [translate]="item.badge.translate"
+    [ngStyle]="{ 'background-color': item.badge.bg, color: item.badge.fg }"
+  >
+    {{ item.badge.title }}
+  </span>
+  <mat-icon class="collapsable-arrow">keyboard_arrow_right</mat-icon>
+</ng-template>

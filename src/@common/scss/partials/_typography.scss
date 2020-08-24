@@ -1,0 +1,293 @@
+// -----------------------------------------------------------------------------------------------------
+// @ Theming
+// -----------------------------------------------------------------------------------------------------
+@mixin typography-theme($theme) {
+  $background: map-get($theme, background);
+  $accent: map-get($theme, accent);
+  $is-dark: map-get($theme, is-dark);
+
+  a {
+    color: map-get($accent, default);
+  }
+
+  code {
+    &:not(.highlight) {
+      background-color: map-get($background, app-bar);
+    }
+  }
+
+  .text-boxed {
+    @if ($is-dark) {
+      background-color: rgba(255, 255, 255, 0.12);
+      color: rgba(255, 255, 255, 0.54);
+    } @else {
+      background-color: rgba(0, 0, 0, 0.12);
+      color: rgba(0, 0, 0, 0.54);
+    }
+  }
+}
+
+// -----------------------------------------------------------------------------------------------------
+// @ Typography
+// -----------------------------------------------------------------------------------------------------
+html {
+  font-size: 68.5%;
+  font-family: 'Muli', 'Helvetica Neue', 'Arial', sans-serif;
+  line-height: 1.4 !important;
+  letter-spacing: -0.1px !important;
+}
+
+body {
+  font-size: 14px;
+}
+
+html,
+body {
+  -webkit-font-smoothing: auto;
+  -moz-osx-font-smoothing: auto;
+}
+
+.mat-title {
+  margin: 0 !important;
+}
+
+// Headings
+.mat-h1,
+.mat-h2,
+.mat-h3,
+.mat-h4,
+.mat-h5,
+.mat-h6,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  min-height: 1.4em;
+  margin: 0;
+}
+
+h1,
+.h1,
+.mat-h1 {
+  font-size: 24px;
+}
+
+h2,
+.h2,
+.mat-h2 {
+  font-size: 20px;
+}
+
+h3,
+.h3,
+.mat-h3 {
+  font-size: 16px;
+}
+
+h4,
+.h4,
+.mat-h4 {
+  font-size: 15px;
+}
+
+h5,
+.h5,
+.mat-h5 {
+  font-size: 14px;
+}
+
+h6,
+.h6 {
+  font-size: 12px;
+}
+
+// Links
+a {
+  text-decoration: none;
+
+  &:not(.mat-button):not(.mat-raised-button):not(.mat-flat-button):not(.mat-stroked-button):not(.mat-icon-button):not(.mat-fab):not(.mat-mini-fab) {
+    &:hover,
+    &:active {
+      text-decoration: underline;
+    }
+  }
+}
+
+// Text format helpers
+.text-italic {
+  font-style: italic;
+}
+
+.text-light-blue {
+  color: #6699cc;
+}
+
+.text-dark {
+  color: #555555;
+}
+
+.text-monospaced {
+  font-family: monospace;
+}
+
+.text-semibold {
+  font-weight: 600;
+}
+
+.text-bold,
+strong {
+  font-weight: 700;
+}
+
+.text-strike {
+  text-decoration: line-through;
+}
+
+.text-super {
+  vertical-align: super;
+}
+
+.text-sub {
+  vertical-align: sub;
+}
+
+.text-capitalize {
+  text-transform: capitalize;
+}
+
+.text-lowercase {
+  text-transform: lowercase;
+}
+
+.text-uppercase {
+  text-transform: uppercase;
+}
+
+.text-break-all {
+  word-break: break-all;
+}
+
+// Text align helpers
+.text-left {
+  text-align: left;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-right {
+  text-align: right;
+}
+
+// Font weight helpers
+@for $weight from 1 through 9 {
+  .font-weight-#{$weight * 100} {
+    font-weight: #{$weight * 100};
+  }
+}
+
+// Font size helpers
+@for $size from 1 through 60 {
+  .font-size-#{$size * 2} {
+    font-size: #{$size * 2}px;
+  }
+}
+
+// Line height helpers
+@for $lineHeight from 1 through 60 {
+  .line-height-#{$lineHeight * 2} {
+    line-height: #{$lineHeight * 2}px;
+  }
+}
+
+.line-height-1 {
+  line-height: 1;
+}
+
+.line-height-1\.25 {
+  line-height: 1.25;
+}
+
+.line-height-1\.5,
+.line-height-1\.50 {
+  line-height: 1.5;
+}
+
+.line-height-1\.75 {
+  line-height: 1.75;
+}
+
+// Letter spacing helpers
+.letter-spacing-condensed {
+  letter-spacing: -0.02em;
+}
+
+.letter-spacing-normal {
+  letter-spacing: normal;
+}
+
+.letter-spacing-relaxed {
+  letter-spacing: 0.02em;
+}
+
+// Boxed text
+.text-boxed {
+  border-radius: 4px;
+  padding: 4px 6px;
+  margin: 0 4px;
+  font-size: 14px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+// Truncate
+.text-truncate {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+// Nowrap
+.text-nowrap {
+  white-space: nowrap;
+}
+
+// Message boxes
+.message-box {
+  padding: 16px;
+  background: #607d8b;
+  border-left: 6px solid #37474f;
+  color: rgba(255, 255, 255, 1);
+
+  &.error {
+    background: #ef5350;
+    border-left-color: #b71c1c;
+  }
+
+  &.warning {
+    background: #ffecb3;
+    border-left-color: #ffc107;
+    color: rgba(0, 0, 0, 0.87);
+  }
+
+  &.success {
+    background: #4caf50;
+    border-left-color: #2e7d32;
+  }
+
+  &.info {
+    background: #b3e5fc;
+    border-left-color: #03a9f4;
+    color: rgba(0, 0, 0, 0.87);
+  }
+}
