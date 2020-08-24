@@ -9,7 +9,7 @@
     "ng": "ng",
     "clean": "rimraf ./dist/",
     "start": "ng serve --open",
-    "start:prod": "ng serve --prod --open",
+    "start:prod": "npm run build:prod && npm run server",
     "build": "ng build",
     "build:prod": "ng build --prod",
     "format:write": "prettier src/**/*.{ts,json,scss,html} --write",
