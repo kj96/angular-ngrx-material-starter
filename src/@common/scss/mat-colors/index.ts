@@ -685,7 +685,7 @@ const matColors = {
   }
 };
 
-// tslint:disable-next-line
+//
 const matPresetColors = [
   '#ffebee',
   '#ffcdd2',

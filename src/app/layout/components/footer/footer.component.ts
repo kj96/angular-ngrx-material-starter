@@ -6,7 +6,7 @@ import { environment } from '@env/environment';
 // end
 
 @Component({
-  selector: 'at-layout-footer',
+  selector: 'robo-layout-footer',
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.scss']
 })

@@ -22,7 +22,6 @@ import {LayoutModule} from '@app/layout';
 //
 import {AppRouting} from '@app/app.routing';
 import {AppComponent} from '@app/app.component';
-
 // end
 
 @NgModule({

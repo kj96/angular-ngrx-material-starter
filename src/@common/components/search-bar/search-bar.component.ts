@@ -14,7 +14,7 @@ import { Subject } from 'rxjs';
 // imports end
 
 @Component({
-  selector: 'at-common-search-bar',
+  selector: 'robo-common-search-bar',
   templateUrl: './search-bar.component.html',
   styleUrls: ['./search-bar.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

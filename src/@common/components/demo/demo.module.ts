@@ -1,28 +1,28 @@
-import { NgModule } from '@angular/core';
-import { RouterModule } from '@angular/router';
-
-import { MatDividerModule } from '@angular/material/divider';
-import { MatListModule } from '@angular/material/list';
-
-import { FuseDemoContentComponent } from './demo-content/demo-content.component';
-import { FuseDemoSidebarComponent } from './demo-sidebar/demo-sidebar.component';
+// outer
+import {NgModule} from '@angular/core';
+import {RouterModule} from '@angular/router';
+// inner
+import { SharedMaterialModule } from '@common/shared-material.module';
+import { SharedOtherModule } from '@common/shared-other.module';
+//
+import {DemoContentComponent} from './demo-content/demo-content.component';
+import {DemoSidebarComponent} from './demo-sidebar/demo-sidebar.component';
+// end
 
 @NgModule({
-    declarations: [
-        FuseDemoContentComponent,
-        FuseDemoSidebarComponent
-    ],
-    imports     : [
-        RouterModule,
-
-        MatDividerModule,
-        MatListModule
-    ],
-    exports     : [
-        FuseDemoContentComponent,
-        FuseDemoSidebarComponent
-    ]
+  declarations: [
+    DemoContentComponent,
+    DemoSidebarComponent
+  ],
+  imports: [
+    RouterModule,
+    SharedMaterialModule,
+    SharedOtherModule
+  ],
+  exports: [
+    DemoContentComponent,
+    DemoSidebarComponent
+  ]
 })
-export class DemoModule
-{
+export class DemoModule {
 }

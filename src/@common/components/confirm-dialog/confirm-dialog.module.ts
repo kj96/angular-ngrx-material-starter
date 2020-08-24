@@ -1,11 +1,11 @@
-// outer imports
+// outer
 import { NgModule } from '@angular/core';
-// inner imports
+// inner
 import { SharedMaterialModule } from '@common/shared-material.module';
 import { SharedOtherModule } from '@common/shared-other.module';
 //
 import { ConfirmDialogComponent } from './confirm-dialog.component';
-// imports end
+//  end
 
 @NgModule({
   imports: [SharedOtherModule, SharedMaterialModule],

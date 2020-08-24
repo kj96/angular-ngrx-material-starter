@@ -4,7 +4,7 @@
   display: block;
 }
 
-at-card {
+robo-card {
   min-width: 0;
   max-width: 100%;
 
@@ -118,13 +118,13 @@ at-card {
 }
 
 body.exporting {
-  at-card {
+  robo-card {
     @include cardExportView;
   }
 }
 
 @media print {
-  at-card {
+  robo-card {
     @include cardExportView;
   }
 }

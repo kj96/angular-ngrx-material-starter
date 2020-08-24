@@ -20,15 +20,15 @@
     <!-- / CONTENT -->
 
     <!-- LOADER -->
-    <at-base-loader *ngIf="(loadingIndicator && (loaderType === 'spinner') && !isCollapsed)"></at-base-loader>
+    <robo-base-loader *ngIf="(loadingIndicator && (loaderType === 'spinner') && !isCollapsed)"></robo-base-loader>
     <!-- / LOADER -->
 
     <!-- EMPTY -->
-    <at-base-empty
+    <robo-base-empty
       *ngIf="emptyIndicator && !loadingIndicator && !isCollapsed"
       [icon]="emptyIcon || icons.empty"
       [text]="texts.empty"
-    ></at-base-empty>
+    ></robo-base-empty>
     <!-- / EMPTY -->
 
   </div>

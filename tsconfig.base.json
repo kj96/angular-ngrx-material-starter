@@ -1,43 +1,35 @@
 {
-  //If true, instructs the code editor used to compile each time the TypeScript files are saved.
-  "compileOnSave": false,
+  // Signals to the IDE to generate all files for a given tsconfig.json upon saving.
+  "compileOnSave": true,
   "compilerOptions": {
-    // Do I create appropriate source map ".map" files?
+    // Generates corresponding .map file.
     "sourceMap": true,
-    // The path to the base folder to search for non-relative paths to files.
+    // Base directory to resolve non-relative module names https://www.typescriptlang.org/docs/handbook/module-resolution.html#base-url.
     "baseUrl": "./src",
-    // Put all the compiled files in this folder, according to their nesting in the source.
-    // If the "outFile" option is specified, the "outDir" option will be ignored.
-    // If "outFile" and "outDir" are not set, then the output files will be created next to their sources.
+    // Redirect output structure to the directory.
     "outDir": "./dist/out-tsc",
-    // Do I create the appropriate ".d.ts" files?
+    // Generates corresponding .d.ts file.
     "declaration": false,
-    // Defines the type of code import in the resulting file specified in "outFile".
-    // Must be specified when using the "outFile" option.
+    // Specify module code generation:
     "module": "esnext",
-    // Define how to search for modules in folders: as in Node.js or classic, as in TypeScript 1.5 and below.
+    // Determine how modules get resolved. Either "Node" for Node.js/io.js style resolution, https://www.typescriptlang.org/docs/handbook/module-resolution.html
     "moduleResolution": "node",
-    // Code type of the resulting resulting file.
-    "target": "es2015",
-    // Create helpers __importStar and __importDefault for compatibility with the Babel ecosystem and enable
-    // allowSyntheticDefaultImports for compatibility with the type system.
+    // Specify ECMAScript target version
+    "target": "esnext",
+    // 	Emit __importStar and __importDefault helpers for runtime babel ecosystem compatibility and enable --allowSyntheticDefaultImports for typesystem compatibility
     "esModuleInterop": true,
-    // Provide full iteration support for for - in, ..., destructuring when tuning to ES5 or ES3?
-    "downlevelIteration": true,
-    // Enable experimental support for EcmaScript decorators?
+    // Enables experimental support for ES decorators.
     "experimentalDecorators": true,
-    // Import created helpers (__extends, __rest and so on) from "tslib".
+    // Import emit helpers (e.g. __extends, __rest, etc..) from tslib
     "importHelpers": true,
-    // By default, all "@types" packages visible in the project, located in the "node_modules" folders at all levels of nesting, are used during compilation.
-    // But, if the "typeRoots" array is specified, then only the type descriptions found in folders located in the paths listed in it will be used during compilation.
-    // In this case, descriptions of types located in other folders will not be used.
-    // Folders with type description packages usually contain the file "index.d.ts" or "package.json" with the property "types" inside.
+    // List of folders to include type definitions from. See https://www.typescriptlang.org/tsconfig#types for more details.
     "typeRoots": [
       "node_modules/@types"
     ],
     // A set of library polyfill files to be included in the final output file.
     "lib": [
-      "es2018",
+      "ESNext",
+      "ES2017",
       "dom"
     ],
     "paths": {

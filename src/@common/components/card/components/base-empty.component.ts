@@ -6,7 +6,7 @@ import {commonAnimations} from '@common/scss/animations';
 
 
 @Component({
-  selector: 'at-base-empty',
+  selector: 'robo-base-empty',
   templateUrl: './base-empty.component.html',
   styleUrls: ['./base-empty.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

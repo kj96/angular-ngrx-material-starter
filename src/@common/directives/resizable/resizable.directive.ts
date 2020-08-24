@@ -50,11 +50,11 @@ export class CommonResizableDirective implements AfterViewInit, OnDestroy, After
   ngAfterViewInit(): void {
     this.el.nativeElement.insertAdjacentHTML(
       'afterend',
-      '<div class="at-resize-trigger at-resize-right"></div>'
+      '<div class="robo-resize-trigger robo-resize-right"></div>'
     );
 
     this.resizeTriggerEl = document.getElementsByClassName(
-      'at-resize-trigger'
+      'robo-resize-trigger'
     )[0];
 
     //

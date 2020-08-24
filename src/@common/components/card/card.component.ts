@@ -13,7 +13,7 @@ import { CommonUtils } from '@common/utils';
 // end
 
 @Component({
-  selector: 'at-card',
+  selector: 'robo-card',
   templateUrl: './card.component.html',
   styleUrls: ['./card.component.scss'],
   encapsulation: ViewEncapsulation.None,

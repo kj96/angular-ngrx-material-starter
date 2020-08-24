@@ -31,7 +31,7 @@ import { CommonUtils } from '@common/utils';
 // imports end
 
 @Component({
-  selector: 'at-sidebar',
+  selector: 'robo-sidebar',
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.scss'],
   encapsulation: ViewEncapsulation.None

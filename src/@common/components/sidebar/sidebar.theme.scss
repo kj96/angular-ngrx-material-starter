@@ -2,7 +2,7 @@
   $background: map-get($theme, background);
   $foreground: map-get($theme, foreground);
 
-  at-sidebar {
+  robo-sidebar {
     background: map-get($background, background);
   }
 

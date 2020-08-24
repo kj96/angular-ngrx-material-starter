@@ -37,7 +37,7 @@ export class CommonSplashScreenService {
    */
   private _init(): void {
     // Get the splash screen element
-    this.splashScreenEl = document.body.querySelector('#at-splash-screen');
+    this.splashScreenEl = document.body.querySelector('#robo-splash-screen');
 
     // If the splash screen element exists...
     if (this.splashScreenEl) {

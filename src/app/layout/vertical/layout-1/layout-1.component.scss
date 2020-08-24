@@ -1,6 +1,6 @@
 @import '@common/scss/common';
 
-at-vertical-layout-1 {
+robo-vertical-layout-1 {
   display: flex;
   width: 100%;
   height: 100%;
@@ -44,7 +44,7 @@ at-vertical-layout-1 {
           -webkit-overflow-scrolling: touch;
 
           // Content component
-          at-layout-content {
+          robo-layout-content {
             &.inner-scroll {
               min-height: 0;
               flex: 1 1 0;

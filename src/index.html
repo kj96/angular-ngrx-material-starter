@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Angular Template</title>
+  <title>Angular Robo Starter Template</title>
 
   <base href="/">
   <meta charset="utf-8"/>
@@ -20,7 +20,7 @@
 
   <!-- Splash Screen CSS -->
   <style type="text/css">
-    #at-splash-screen {
+    #robo-splash-screen {
       display: block;
       position: absolute;
       top: 0;
@@ -32,7 +32,7 @@
       pointer-events: none;
     }
 
-    #at-splash-screen .center {
+    #robo-splash-screen .center {
       display: block;
       width: 100%;
       position: absolute;
@@ -40,7 +40,7 @@
       transform: translateY(-50%);
     }
 
-    #at-splash-screen .center .spinner {
+    #robo-splash-screen .center .spinner {
       display: block;
       margin-top: 2em;
       margin-right: auto;
@@ -52,11 +52,11 @@
       transform: scale(.7);
     }
 
-    #at-splash-screen .center .medium {
+    #robo-splash-screen .center .medium {
       transform: scale(1.5)
     }
 
-    #at-splash-screen .center .spinner-wrapper {
+    #robo-splash-screen .center .spinner-wrapper {
       position: relative;
       width: 4em;
       height: 4em;
@@ -64,7 +64,7 @@
       left: calc(50% - 2em);
     }
 
-    #at-splash-screen .center .spinner-wrapper::after {
+    #robo-splash-screen .center .spinner-wrapper::after {
       content: "";
       background: #fff;
       border-radius: 50%;
@@ -75,7 +75,7 @@
       left: 0.5em;
     }
 
-    #at-splash-screen .center .rotator {
+    #robo-splash-screen .center .rotator {
       position: relative;
       width: 4em;
       border-radius: 4em;
@@ -83,7 +83,7 @@
       animation: rotate 2000ms infinite linear;
     }
 
-    #at-splash-screen .center .rotator:before {
+    #robo-splash-screen .center .rotator:before {
       content: "";
       position: absolute;
       top: 0;
@@ -95,19 +95,19 @@
       border-radius: 100%;
     }
 
-    #at-splash-screen .center .inner-spin {
+    #robo-splash-screen .center .inner-spin {
       background: #fff;
       height: 4em;
       width: 2em;
     }
 
-    #at-splash-screen .center .inner-spin {
+    #robo-splash-screen .center .inner-spin {
       animation: rotate-left 2500ms infinite cubic-bezier(0.445, 0.050, 0.550, 0.950);
       border-radius: 2em 0 0 2em;
       transform-origin: 2em 2em;
     }
 
-    #at-splash-screen .center .inner-spin:last-child {
+    #robo-splash-screen .center .inner-spin:last-child {
       animation: rotate-right 2500ms infinite cubic-bezier(0.445, 0.050, 0.550, 0.950);
       margin-top: -4em;
       border-radius: 0 2em 2em 0;
@@ -146,7 +146,7 @@
 
 <body>
   <!-- Splash Screen -->
-  <div id="at-splash-screen">
+  <div id="robo-splash-screen">
     <div class="center">
       <!-- Material Design Spinner -->
       <div class="spinner medium">
@@ -162,6 +162,6 @@
   </div>
   <!-- / Splash Screen -->
 
-  <at-root></at-root>
+  <robo-root></robo-root>
 </body>
 </html>

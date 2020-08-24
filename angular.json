@@ -3,11 +3,11 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "angular-template": {
+    "angular-robo-starter": {
       "projectType": "application",
       "root": "",
       "sourceRoot": "src",
-      "prefix": "at",
+      "prefix": "robo",
       "schematics": {
         "@schematics/angular:component": {
           "style": "scss",
@@ -92,53 +92,29 @@
                   "maximumWarning": "6kb"
                 }
               ]
-            },
-            "hmr": {
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.hmr.ts"
-                }
-              ]
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "angular-template:build"
+            "browserTarget": "angular-robo-starter:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "angular-template:build:production"
-            },
-            "hmr": {
-              "hmr": true,
-              "browserTarget": "angular-template:build:hmr",
-              "port": 4200
+              "browserTarget": "angular-robo-starter:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-template:build"
-          }
-        },
-        "lint": {
-          "builder": "@angular-devkit/build-angular:tslint",
-          "options": {
-            "tsConfig": [
-              "tsconfig.app.json"
-            ],
-            "exclude": [
-              "**/node_modules/**"
-            ]
+            "browserTarget": "angular-robo-starter:build"
           }
         }
       }
     }},
-  "defaultProject": "angular-template",
+  "defaultProject": "angular-robo-starter",
   "cli": {
     "analytics": false
   }

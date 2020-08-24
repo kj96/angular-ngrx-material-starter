@@ -19,7 +19,7 @@ import {
 // end
 
 @Component({
-  selector: 'at-layout-toolbar',
+  selector: 'robo-layout-toolbar',
   templateUrl: './toolbar.component.html',
   styleUrls: ['./toolbar.component.scss'],
   encapsulation: ViewEncapsulation.None,

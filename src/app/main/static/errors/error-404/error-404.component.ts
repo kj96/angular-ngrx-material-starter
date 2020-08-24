@@ -8,7 +8,7 @@ import {
 // end
 
 @Component({
-  selector: 'at-error-404',
+  selector: 'robo-error-404',
   templateUrl: './error-404.component.html',
   styleUrls: ['./error-404.component.scss'],
   encapsulation: ViewEncapsulation.None,

@@ -62,15 +62,15 @@
 
   // hide tooltips and other overlay content
   body > * {
-    &:not(at-root) {
+    &:not(robo-root) {
       display: none !important;
       visibility: hidden !important;
     }
   }
 
-  at-more-info,
+  robo-more-info,
   .cdk-overlay-container,
-  .at-d3-tooltip,
+  .robo-d3-tooltip,
   .mat-tab-header {
     display: none !important;
   }
@@ -89,11 +89,11 @@
   }
 
   /* General styles */
-  at-root {
-    at-sidebar,
-    at-navigation,
-    at-layout-toolbar,
-    at-layout-footer,
+  robo-root {
+    robo-sidebar,
+    robo-navigation,
+    robo-layout-toolbar,
+    robo-layout-footer,
     .has-comments::after,
     .sidebar-button,
     .header,

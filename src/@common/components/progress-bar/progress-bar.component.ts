@@ -6,7 +6,7 @@ import { takeUntil } from 'rxjs/operators';
 import { ProgressBarService } from './progress-bar.service';
 
 @Component({
-  selector: 'at-progress-bar',
+  selector: 'robo-progress-bar',
   templateUrl: './progress-bar.component.html',
   styleUrls: ['./progress-bar.component.scss'],
   encapsulation: ViewEncapsulation.None

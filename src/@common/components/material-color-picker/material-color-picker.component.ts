@@ -19,7 +19,7 @@ export const MATERIAL_COLOR_PICKER_VALUE_ACCESSOR: any = {
 };
 
 @Component({
-  selector: 'at-common-material-color-picker',
+  selector: 'robo-common-material-color-picker',
   templateUrl: './material-color-picker.component.html',
   styleUrls: ['./material-color-picker.component.scss'],
   animations: commonAnimations,

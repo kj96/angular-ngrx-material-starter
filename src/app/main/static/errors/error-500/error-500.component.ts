@@ -7,7 +7,7 @@ import {
 // end
 
 @Component({
-  selector: 'at-error-500',
+  selector: 'robo-error-500',
   templateUrl: './error-500.component.html',
   styleUrls: ['./error-500.component.scss'],
   encapsulation: ViewEncapsulation.None,

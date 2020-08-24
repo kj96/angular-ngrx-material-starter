@@ -1,9 +1,9 @@
-@mixin at-layout-navigation-theme($theme) {
+@mixin robo-layout-navigation-theme($theme) {
   $is-dark: map-get($theme, is-dark);
   $foreground: map-get($theme, foreground);
   $background: map-get($theme, background);
 
-  at-navigation {
+  robo-navigation {
     // Base colors
     color: map-get($foreground, text);
 
@@ -17,14 +17,6 @@
       background: map-get($background, background);
     } @else {
       background: map-get($background, card);
-    }
-
-    at-layout-navigation-navtree-tree {
-      .mat-tree-node {
-        &:hover {
-          background: map-get($background, hover);
-        }
-      }
     }
   }
 }

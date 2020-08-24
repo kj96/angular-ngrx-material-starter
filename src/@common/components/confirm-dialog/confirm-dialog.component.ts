@@ -4,7 +4,7 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 // imports end
 
 @Component({
-  selector: 'at-common-confirm-dialog',
+  selector: 'robo-common-confirm-dialog',
   templateUrl: './confirm-dialog.component.html',
   styleUrls: ['./confirm-dialog.component.scss'],
   encapsulation: ViewEncapsulation.None

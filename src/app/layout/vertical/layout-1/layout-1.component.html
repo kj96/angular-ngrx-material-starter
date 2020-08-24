@@ -37,7 +37,7 @@
           <!-- / TOOLBAR: Below static -->
 
           <!-- CONTENT -->
-          <at-layout-content></at-layout-content>
+          <robo-layout-content></robo-layout-content>
           <!-- / CONTENT -->
         </div>
       </div>
@@ -57,7 +57,7 @@
 <!-- TOOLBAR -->
 <ng-template #toolbarTpl>
   <ng-container *ngIf="toolbar$ | async as toolbar">
-    <at-layout-toolbar
+    <robo-layout-toolbar
       *ngIf="!toolbar.hidden"
       [ngClass]="
         toolbar.customBackgroundColor === true
@@ -65,7 +65,7 @@
           : toolbar.position
       "
     >
-    </at-layout-toolbar>
+    </robo-layout-toolbar>
   </ng-container>
 </ng-template>
 <!-- / TOOLBAR -->
@@ -73,7 +73,7 @@
 <!-- FOOTER -->
 <ng-template #footerTpl>
   <ng-container *ngIf="footer$ | async as footer">
-    <at-layout-footer
+    <robo-layout-footer
       *ngIf="!footer.hidden"
       [ngClass]="
         footer.customBackgroundColor === true
@@ -81,7 +81,7 @@
           : ' '
       "
     >
-  </at-layout-footer>
+  </robo-layout-footer>
   </ng-container>
 </ng-template>
 <!-- / FOOTER -->
@@ -91,25 +91,25 @@
   <!--  LEFT NAVIGATION  -->
   <ng-container *ngIf="(navbar$ | async) as navbar">
 
-    <at-sidebar
+    <robo-sidebar
       name="navbar"
       class="navbar-sidebar"
 
       [folded]="navbar.folded"
       [lockedOpen]="'gt-md'"
     >
-      <at-navigation class="left-navigation"></at-navigation>
-    </at-sidebar>
+      <robo-layout-navigation class="left-navigation"></robo-layout-navigation>
+    </robo-sidebar>
 
-    <at-sidebar
+    <robo-sidebar
       name="navbar"
       class="navbar-sidebar"
 
       [folded]="navbar.folded"
       lockedOpen="gt-md"
     >
-      <at-navigation class="left-navigation"></at-navigation>
-    </at-sidebar>
+      <robo-layout-navigation class="left-navigation"></robo-layout-navigation>
+    </robo-sidebar>
   </ng-container>
 </ng-template>
 <!-- / LEFT NAVIGATION -->

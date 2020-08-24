@@ -1,16 +1,16 @@
-import { Component } from '@angular/core';
+// outer
+import {Component} from '@angular/core';
+// end
 
 @Component({
-    selector   : 'demo-content',
-    templateUrl: './demo-content.component.html',
-    styleUrls  : ['./demo-content.component.scss']
+  selector: 'robo-demo-content',
+  templateUrl: './demo-content.component.html',
+  styleUrls: ['./demo-content.component.scss']
 })
-export class FuseDemoContentComponent
-{
-    /**
-     * Constructor
-     */
-    constructor()
-    {
-    }
+export class DemoContentComponent {
+  /**
+   * Constructor
+   */
+  constructor() {
+  }
 }

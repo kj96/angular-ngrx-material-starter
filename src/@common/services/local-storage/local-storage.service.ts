@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { merge } from 'lodash';
 
-const APP_PREFIX = 'at-';
+const APP_PREFIX = 'robo-';
 
 @Injectable()
 export class LocalStorageService {

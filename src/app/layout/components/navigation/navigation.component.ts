@@ -6,7 +6,7 @@ import {Observable} from 'rxjs';
 import {map} from 'rxjs/operators';
 // ngrx
 import {select, Store} from '@ngrx/store';
-// inner imports
+// inner
 import { CommonSidebarService} from '@common';
 //
 import {
@@ -18,7 +18,7 @@ import {
 // end
 
 @Component({
-  selector: 'at-navigation',
+  selector: 'robo-layout-navigation',
   templateUrl: './navigation.component.html',
   styleUrls: ['./navigation.component.scss'],
   encapsulation: ViewEncapsulation.None,

@@ -5,7 +5,7 @@ import {commonAnimations} from '@common';
 // end
 
 @Component({
-  selector: 'at-dashboard',
+  selector: 'robo-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.scss'],
   encapsulation: ViewEncapsulation.None,

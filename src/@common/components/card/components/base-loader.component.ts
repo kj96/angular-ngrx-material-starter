@@ -7,7 +7,7 @@ import {
 } from '@angular/core';
 
 @Component({
-  selector: 'at-base-loader',
+  selector: 'robo-base-loader',
   templateUrl: './base-loader.component.html',
   styleUrls: ['./base-loader.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,

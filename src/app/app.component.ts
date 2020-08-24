@@ -15,7 +15,7 @@ import {RootStoreState, layoutSelectors} from '@app/core';
 // end
 
 @Component({
-  selector: 'at-root',
+  selector: 'robo-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
     'theme-blue-gray-dark',
     'theme-pink-dark',
   ];
-  themeClass = this.themes[1];
+  themeClass = this.themes[3];
   //
   layoutStyle$: Observable<string> = this._store.select(layoutSelectors.getLayoutStyle);
 

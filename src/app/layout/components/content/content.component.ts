@@ -7,7 +7,7 @@ import {
 // end
 
 @Component({
-  selector: 'at-layout-content',
+  selector: 'robo-layout-content',
   templateUrl: './content.component.html',
   styleUrls: ['./content.component.scss'],
   encapsulation: ViewEncapsulation.None,
