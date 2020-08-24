@@ -13,7 +13,6 @@
     "build": "ng build",
     "build:prod": "ng build --prod",
     "format:write": "prettier src/**/*.{ts,json,scss,html} --write",
-    "analyze": "npm run clean && npm run build:prod -- --stats-json && webpack-bundle-analyzer ./dist/stats-es2015.json",
     "lint": "eslint src/**/*.ts",
     "ci": "npm run format:write && npm run build:prod -- --deploy-url /angular-robo-starter/ --base-href /angular-robo-starter"
   },
