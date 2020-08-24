@@ -1,4 +1,4 @@
-# Angular, NgRx and Angular Material
+# Angular, NgRx, Material design
 by [@derevenkoyurii](https://www.linkedin.com/in/yurii-derevenko-747967125/)
 
 ## Getting started
