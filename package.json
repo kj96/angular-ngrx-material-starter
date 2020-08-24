@@ -14,7 +14,8 @@
     "build:prod": "ng build --prod",
     "format:write": "prettier src/**/*.{ts,json,scss,html} --write",
     "analyze": "npm run clean && npm run build:prod -- --stats-json && webpack-bundle-analyzer ./dist/stats-es2015.json",
-    "lint": "eslint -c .eslintrc.js --ext .ts"
+    "lint": "eslint -c .eslintrc.js --ext .ts",
+    "ci": "npm run format:write && ng lint && npm run build:prod -- --deploy-url /angular-robo-starter/ --base-href /angular-robo-starter"
   },
   "dependencies": {
     "@angular/animations": "~10.0.11",
