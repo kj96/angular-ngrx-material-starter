@@ -1,6 +1,7 @@
 export * from './card/card.module';
 export * from './confirm-dialog/confirm-dialog.module';
 export * from './demo/demo.module';
+export * from './highlight/highlight.module';
 export * from './maintenance/maintenance.module';
 export * from './mat-select-search/mat-select-search.module';
 export * from './material-color-picker/material-color-picker.module';

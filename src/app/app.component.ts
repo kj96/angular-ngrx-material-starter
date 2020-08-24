@@ -31,7 +31,7 @@ export class AppComponent implements OnInit {
     'theme-blue-gray-dark',
     'theme-pink-dark',
   ];
-  themeClass = this.themes[3];
+  themeClass = this.themes[4];
   //
   layoutStyle$: Observable<string> = this._store.select(layoutSelectors.getLayoutStyle);
 

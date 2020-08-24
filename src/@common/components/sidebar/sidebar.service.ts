@@ -1,10 +1,10 @@
-// outer imports
+// outer
 import { Injectable } from '@angular/core';
 //
 import { NGXLogger } from 'ngx-logger';
-// inner imports
+// inner
 import { SidebarComponent } from './sidebar.component';
-// imports end
+// end
 
 @Injectable({ providedIn: 'root' })
 export class CommonSidebarService {
@@ -14,7 +14,7 @@ export class CommonSidebarService {
   /**
    * Constructor
    *
-   * @param {NGXLogger} _logger
+   * @param  _logger
    */
   constructor(private _logger: NGXLogger) {}
 

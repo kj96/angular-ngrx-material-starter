@@ -2,6 +2,7 @@
 // @ Theming
 // -----------------------------------------------------------------------------------------------------
 @mixin typography-theme($theme) {
+
   $background: map-get($theme, background);
   $accent: map-get($theme, accent);
   $is-dark: map-get($theme, is-dark);
@@ -11,8 +12,16 @@
   }
 
   code {
+
     &:not(.highlight) {
       background-color: map-get($background, app-bar);
+    }
+  }
+
+  .changelog {
+
+    .entry {
+      background-color: map-get($background, card);
     }
   }
 
@@ -31,7 +40,7 @@
 // @ Typography
 // -----------------------------------------------------------------------------------------------------
 html {
-  font-size: 68.5%;
+  font-size: 62.5%;
   font-family: 'Muli', 'Helvetica Neue', 'Arial', sans-serif;
   line-height: 1.4 !important;
   letter-spacing: -0.1px !important;
@@ -41,73 +50,41 @@ body {
   font-size: 14px;
 }
 
-html,
-body {
+html, body {
   -webkit-font-smoothing: auto;
   -moz-osx-font-smoothing: auto;
 }
 
-.mat-title {
-  margin: 0 !important;
-}
-
 // Headings
-.mat-h1,
-.mat-h2,
-.mat-h3,
-.mat-h4,
-.mat-h5,
-.mat-h6,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.h1,
-.h2,
-.h3,
-.h4,
-.h5,
-.h6 {
-  min-height: 1.4em;
-  margin: 0;
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4, .h5, .h6 {
+  font-weight: normal;
 }
 
-h1,
-.h1,
-.mat-h1 {
+h1, .h1 {
   font-size: 24px;
 }
 
-h2,
-.h2,
-.mat-h2 {
+h2, .h2 {
   font-size: 20px;
 }
 
-h3,
-.h3,
-.mat-h3 {
+h3, .h3 {
   font-size: 16px;
 }
 
-h4,
-.h4,
-.mat-h4 {
+h4, .h4 {
   font-size: 15px;
 }
 
-h5,
-.h5,
-.mat-h5 {
-  font-size: 14px;
+h5, .h5 {
+  font-size: 13px;
 }
 
-h6,
-.h6 {
+h6, .h6 {
   font-size: 12px;
 }
+
 // Links
 a {
   text-decoration: none;
@@ -202,22 +179,23 @@ small {
   font-size: 80%;
 }
 
+// Table
+table {
+
+  thead {
+
+    tr {
+
+      th {
+        text-align: left;
+      }
+    }
+  }
+}
 
 // Text format helpers
 .text-italic {
   font-style: italic;
-}
-
-.text-light-blue {
-  color: #6699cc;
-}
-
-.text-dark {
-  color: #555555;
-}
-
-.text-monospaced {
-  font-family: monospace;
 }
 
 .text-semibold {
@@ -253,10 +231,6 @@ strong {
   text-transform: uppercase;
 }
 
-.text-break-all {
-  word-break: break-all;
-}
-
 // Text align helpers
 .text-left {
   text-align: left;
@@ -272,6 +246,7 @@ strong {
 
 // Font weight helpers
 @for $weight from 1 through 9 {
+
   .font-weight-#{$weight * 100} {
     font-weight: #{$weight * 100};
   }
@@ -279,6 +254,7 @@ strong {
 
 // Font size helpers
 @for $size from 1 through 60 {
+
   .font-size-#{$size * 2} {
     font-size: #{$size * 2}px;
   }
@@ -286,6 +262,7 @@ strong {
 
 // Line height helpers
 @for $lineHeight from 1 through 60 {
+
   .line-height-#{$lineHeight * 2} {
     line-height: #{$lineHeight * 2}px;
   }
@@ -323,10 +300,10 @@ strong {
 
 // Boxed text
 .text-boxed {
-  border-radius: 4px;
-  padding: 4px 6px;
-  margin: 0 4px;
-  font-size: 14px;
+  border-radius: 2px;
+  padding: 4px 8px;
+  margin: 0 8px;
+  font-size: 11px;
   font-weight: 600;
   white-space: nowrap;
 }
@@ -344,32 +321,120 @@ strong {
   white-space: nowrap;
 }
 
+// Changelog
+.changelog {
+
+  .entry {
+    margin-bottom: 24px;
+    padding: 24px 32px;
+    @include mat-elevation(2);
+
+    > .title {
+      display: flex;
+      align-items: center;
+      margin-bottom: 24px;
+
+      .version {
+        font-size: 24px;
+      }
+
+      .date {
+        margin-left: 8px;
+        font-size: 17px;
+        opacity: 0.54;
+      }
+    }
+
+    .groups {
+
+      div {
+        margin-bottom: 32px;
+
+        &:last-child {
+          margin-bottom: 0;
+        }
+      }
+
+      .title {
+        display: inline-flex;
+        font-size: 13px;
+        color: white;
+        letter-spacing: 0.015em;
+        line-height: 1;
+        padding: 5px 8px;
+        border-radius: 2px;
+      }
+
+      .breaking-changes {
+
+        .title {
+          background: #F44336;
+        }
+      }
+
+      .new {
+
+        .title {
+          background: #43A047;
+        }
+      }
+
+      .improved {
+
+        .title {
+          background: #673AB7;
+        }
+      }
+
+      .fixed {
+
+        .title {
+          background: #2196F3;
+        }
+      }
+
+      ul {
+        padding-left: 24px;
+
+        li {
+          margin-bottom: 6px;
+          letter-spacing: 0.015em;
+
+          ul {
+            margin-top: 6px;
+          }
+        }
+      }
+    }
+  }
+}
+
 // Message boxes
 .message-box {
   padding: 16px;
-  background: #607d8b;
-  border-left: 6px solid #37474f;
+  background: #607D8B;
+  border-left: 6px solid #37474F;
   color: rgba(255, 255, 255, 1);
 
   &.error {
-    background: #ef5350;
-    border-left-color: #b71c1c;
+    background: #EF5350;
+    border-left-color: #B71C1C;
   }
 
   &.warning {
-    background: #ffecb3;
-    border-left-color: #ffc107;
+    background: #FFECB3;
+    border-left-color: #FFC107;
     color: rgba(0, 0, 0, 0.87);
   }
 
   &.success {
-    background: #4caf50;
-    border-left-color: #2e7d32;
+    background: #4CAF50;
+    border-left-color: #2E7D32;
   }
 
   &.info {
-    background: #b3e5fc;
-    border-left-color: #03a9f4;
+    background: #B3E5FC;
+    border-left-color: #03A9F4;
     color: rgba(0, 0, 0, 0.87);
   }
 }

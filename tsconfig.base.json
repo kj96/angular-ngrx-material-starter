@@ -29,7 +29,6 @@
     // A set of library polyfill files to be included in the final output file.
     "lib": [
       "ESNext",
-      "ES2017",
       "dom"
     ],
     "paths": {

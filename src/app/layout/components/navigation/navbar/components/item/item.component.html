@@ -16,12 +16,11 @@
   <ng-template #itemContent>
     <mat-icon class="nav-link-icon" *ngIf="item.icon">{{item.icon}}</mat-icon>
 
-    <span class="nav-link-title" [translate]="item.translate"></span>
+    <span class="nav-link-title">{{item.title}}</span>
 
     <span
       class="nav-link-badge accent-A100"
       *ngIf="item.badge && item.badge.title"
-      [translate]="item.badge.translate"
       [ngStyle]="{
         'background-color': item.badge.bg,
         color: item.badge.fg

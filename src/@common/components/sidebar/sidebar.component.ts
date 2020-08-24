@@ -1,17 +1,16 @@
-// outer imports
+// outer
 import {
   Output,
   Component,
   HostBinding,
   Input,
-  AfterViewInit,
+  EventEmitter,
   ChangeDetectorRef,
   ElementRef,
-  EventEmitter,
   OnInit,
   OnDestroy,
   Renderer2,
-  ViewEncapsulation
+  ViewEncapsulation, HostListener
 } from '@angular/core';
 import {
   animate,
@@ -23,12 +22,11 @@ import { MediaObserver } from '@angular/flex-layout';
 // rxjs
 import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
-// inner imports
+// inner
 import { CommonMatchMediaService } from '@common/services';
 //
 import { CommonSidebarService } from './sidebar.service';
-import { CommonUtils } from '@common/utils';
-// imports end
+// end
 
 @Component({
   selector: 'robo-sidebar',
@@ -36,16 +34,15 @@ import { CommonUtils } from '@common/utils';
   styleUrls: ['./sidebar.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
-  // Input
+export class SidebarComponent implements OnInit, OnDestroy {
   @Input() name: string;
   @Input() key: string;
   @Input() position: 'left' | 'right';
   @HostBinding('class.open') opened: boolean;
-  @HostBinding('class.animations-enabled') private _animationsEnabled: boolean;
   @Input() lockedOpen: string;
   @HostBinding('class.locked-open') isLockedOpen: boolean;
   @Input() foldedWidth: number;
+  @Input() foldedAutoTriggerOnHover: boolean;
   @HostBinding('class.unfolded') unfolded: boolean;
   @Input() invisibleOverlay: boolean;
   @Output() foldedChanged: EventEmitter<boolean>;
@@ -58,6 +55,8 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
   private _backdrop: HTMLElement | null = null;
   private _player: AnimationPlayer;
   private _unsubscribeAll: Subject<any>;
+
+  @HostBinding('class.animations-enabled') private _animationsEnabled: boolean;
 
   /**
    * Constructor
@@ -80,6 +79,7 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
     private _renderer: Renderer2
   ) {
     // Set the defaults
+    this.foldedAutoTriggerOnHover = false;
     this.foldedWidth = 64;
     this.foldedChanged = new EventEmitter();
     this.openedChanged = new EventEmitter();
@@ -88,20 +88,15 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
     this.invisibleOverlay = false;
 
     // Set the private defaults
-    // Set the private defaults
     this._animationsEnabled = false;
     this._folded = false;
     this._unsubscribeAll = new Subject();
   }
 
-  // ---------------------------------------------------------------------------
-  // @ Accessors
-  // ---------------------------------------------------------------------------
-
   /**
    * Folded
    *
-   * @param {boolean} value
+   * @param value
    */
   @Input() set folded(value: boolean) {
     // Set the folded
@@ -138,21 +133,9 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
       this.fold();
 
       // Set the folded width
-      this._renderer.setStyle(
-        this._elementRef.nativeElement,
-        'width',
-        styleValue
-      );
-      this._renderer.setStyle(
-        this._elementRef.nativeElement,
-        'min-width',
-        styleValue
-      );
-      this._renderer.setStyle(
-        this._elementRef.nativeElement,
-        'max-width',
-        styleValue
-      );
+      this._renderer.setStyle(this._elementRef.nativeElement, 'width', styleValue);
+      this._renderer.setStyle(this._elementRef.nativeElement, 'min-width', styleValue);
+      this._renderer.setStyle(this._elementRef.nativeElement, 'max-width', styleValue);
 
       // Set the style and class
       this._renderer.setStyle(sibling, styleRule, styleValue);
@@ -175,8 +158,6 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
 
     // Emit the 'foldedChanged' event
     this.foldedChanged.emit(this.folded);
-
-    CommonUtils.windowDispatchResize();
   }
 
   get folded(): boolean {
@@ -193,12 +174,7 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
   ngOnInit(): void {
     // Register the sidebar
     this._sidebarService.register(this.name, this);
-  }
 
-  /**
-   * After View Init
-   */
-  ngAfterViewInit(): void {
     // Setup visibility
     this._setupVisibility();
 
@@ -240,18 +216,10 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
    */
   private _setupVisibility(): void {
     // Remove the existing box-shadow
-    this._renderer.setStyle(
-      this._elementRef.nativeElement,
-      'box-shadow',
-      'none'
-    );
+    this._renderer.setStyle(this._elementRef.nativeElement, 'box-shadow', 'none');
 
     // Make the sidebar invisible
-    this._renderer.setStyle(
-      this._elementRef.nativeElement,
-      'visibility',
-      'hidden'
-    );
+    this._renderer.setStyle(this._elementRef.nativeElement, 'visibility', 'hidden');
   }
 
   /**
@@ -263,15 +231,9 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
     // Add the correct class name to the sidebar
     // element depending on the position attribute
     if (this.position === 'right') {
-      this._renderer.addClass(
-        this._elementRef.nativeElement,
-        'right-positioned'
-      );
+      this._renderer.addClass(this._elementRef.nativeElement, 'right-positioned');
     } else {
-      this._renderer.addClass(
-        this._elementRef.nativeElement,
-        'left-positioned'
-      );
+      this._renderer.addClass(this._elementRef.nativeElement, 'left-positioned');
     }
   }
 
@@ -293,10 +255,14 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
     // Set the wasFolded
     this._wasFolded = this.folded;
 
+    // Show the sidebar
+    this._showSidebar();
+
     // Act on every media change
     this._matchMediaService.onMediaChange
       .pipe(takeUntil(this._unsubscribeAll))
       .subscribe(() => {
+
         // Get the active status
         const isActive = this._mediaObserver.isActive(this.lockedOpen);
 
@@ -321,6 +287,9 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
 
           // If the sidebar was folded, forcefully fold it again
           if (this._wasFolded) {
+            // Enable the animations
+            this._enableAnimations();
+
             // Fold
             this.folded = true;
 
@@ -330,8 +299,9 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
 
           // Hide the backdrop if any exists
           this._hideBackdrop();
-          // De-Activate the lockedOpen
-        } else {
+        }
+        // De-Activate the lockedOpen
+        else {
           // Set the lockedOpen status
           this.isLockedOpen = false;
 
@@ -393,21 +363,9 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
     this.fold();
 
     // Set the folded width
-    this._renderer.setStyle(
-      this._elementRef.nativeElement,
-      'width',
-      styleValue
-    );
-    this._renderer.setStyle(
-      this._elementRef.nativeElement,
-      'min-width',
-      styleValue
-    );
-    this._renderer.setStyle(
-      this._elementRef.nativeElement,
-      'max-width',
-      styleValue
-    );
+    this._renderer.setStyle(this._elementRef.nativeElement, 'width', styleValue);
+    this._renderer.setStyle(this._elementRef.nativeElement, 'min-width', styleValue);
+    this._renderer.setStyle(this._elementRef.nativeElement, 'max-width', styleValue);
 
     // Set the style and class
     this._renderer.setStyle(sibling, styleRule, styleValue);
@@ -424,31 +382,31 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
     this._backdrop = this._renderer.createElement('div');
 
     // Add a class to the backdrop element
-    this._backdrop.classList.add('sidebar-overlay');
+    this._backdrop.classList.add('fuse-sidebar-overlay');
 
     // Add a class depending on the invisibleOverlay option
     if (this.invisibleOverlay) {
-      this._backdrop.classList.add('sidebar-overlay-invisible');
+      this._backdrop.classList.add('fuse-sidebar-overlay-invisible');
     }
 
     // Append the backdrop to the parent of the sidebar
-    this._renderer.appendChild(
-      this._elementRef.nativeElement.parentElement,
-      this._backdrop
-    );
+    this._renderer.appendChild(this._elementRef.nativeElement.parentElement, this._backdrop);
 
     // Create the enter animation and attach it to the player
-    this._player = this._animationBuilder
-      .build([animate('300ms ease', style({ opacity: 1 }))])
-      .create(this._backdrop);
+    this._player =
+      this._animationBuilder
+        .build([
+          animate('300ms ease', style({ opacity: 1 }))
+        ]).create(this._backdrop);
 
     // Play the animation
     this._player.play();
 
     // Add an event listener to the overlay
     this._backdrop.addEventListener('click', () => {
-      this.close();
-    });
+        this.close();
+      }
+    );
 
     // Mark for check
     this._changeDetectorRef.markForCheck();
@@ -465,15 +423,18 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
     }
 
     // Create the leave animation and attach it to the player
-    this._player = this._animationBuilder
-      .build([animate('300ms ease', style({ opacity: 0 }))])
-      .create(this._backdrop);
+    this._player =
+      this._animationBuilder
+        .build([
+          animate('300ms ease', style({ opacity: 0 }))
+        ]).create(this._backdrop);
 
     // Play the animation
     this._player.play();
 
     // Once the animation is done...
     this._player.onDone(() => {
+
       // If the backdrop still exists...
       if (this._backdrop) {
         // Remove the backdrop
@@ -514,19 +475,12 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
 
     // Add a delay so close animation can play
     setTimeout(() => {
+
       // Remove the box-shadow
-      this._renderer.setStyle(
-        this._elementRef.nativeElement,
-        'box-shadow',
-        'none'
-      );
+      this._renderer.setStyle(this._elementRef.nativeElement, 'box-shadow', 'none');
 
       // Make the sidebar invisible
-      this._renderer.setStyle(
-        this._elementRef.nativeElement,
-        'visibility',
-        'hidden'
-      );
+      this._renderer.setStyle(this._elementRef.nativeElement, 'visibility', 'hidden');
     }, delayAmount);
 
     // Mark for check
@@ -551,7 +505,6 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
     this._changeDetectorRef.markForCheck();
   }
 
-
   // -----------------------------------------------------------------------------------------------------
   // @ Public methods
   // -----------------------------------------------------------------------------------------------------
@@ -563,6 +516,7 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
     if (this.opened || this.isLockedOpen) {
       return;
     }
+
     // Enable the animations
     this._enableAnimations();
 
@@ -590,6 +544,9 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
       return;
     }
 
+    // Enable the animations
+    this._enableAnimations();
+
     // Hide the backdrop
     this._hideBackdrop();
 
@@ -615,6 +572,30 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
     } else {
       this.open();
     }
+  }
+
+  /**
+   * Mouseenter
+   */
+  @HostListener('mouseenter') onMouseEnter(): void {
+    // Only work if the auto trigger is enabled
+    if (!this.foldedAutoTriggerOnHover) {
+      return;
+    }
+
+    this.unfoldTemporarily();
+  }
+
+  /**
+   * Mouseleave
+   */
+  @HostListener('mouseleave') onMouseLeave(): void {
+    // Only work if the auto trigger is enabled
+    if (!this.foldedAutoTriggerOnHover) {
+      return;
+    }
+
+    this.foldTemporarily();
   }
 
   /**
@@ -666,39 +647,53 @@ export class SidebarComponent implements AfterViewInit, OnInit, OnDestroy {
     }
   }
 
-
   /**
    * Fold the temporarily unfolded sidebar back
    */
-  toggleLockedOpen(): void {
-    if (this.isLockedOpen) {
-      this.isLockedOpen = false;
-
-      // Set the opened status
-      this.opened = false;
-
-      // Hide the sidebar
-      this._hideSidebar();
-
-      // Mark for check
-      this._changeDetectorRef.markForCheck();
-
-    } else {
-
-      this.isLockedOpen = true;
-
-      // Show the sidebar
-      this._showSidebar();
-
-      // Set the opened status
-      this.opened = true;
-
-      // Mark for check
-      this._changeDetectorRef.markForCheck();
+  foldTemporarily(): void {
+    // Only work if the sidebar is folded
+    if (!this.folded) {
+      return;
     }
 
-    setTimeout(() => {
-      window.dispatchEvent(new Event('resize'));
-    });
+    // Enable the animations
+    this._enableAnimations();
+
+    // Fold the sidebar back
+    this.unfolded = false;
+
+    // Set the folded width
+    const styleValue = this.foldedWidth + 'px';
+
+    this._renderer.setStyle(this._elementRef.nativeElement, 'width', styleValue);
+    this._renderer.setStyle(this._elementRef.nativeElement, 'min-width', styleValue);
+    this._renderer.setStyle(this._elementRef.nativeElement, 'max-width', styleValue);
+
+    // Mark for check
+    this._changeDetectorRef.markForCheck();
+  }
+
+  /**
+   * Unfold the sidebar temporarily
+   */
+  unfoldTemporarily(): void {
+    // Only work if the sidebar is folded
+    if (!this.folded) {
+      return;
+    }
+
+    // Enable the animations
+    this._enableAnimations();
+
+    // Unfold the sidebar temporarily
+    this.unfolded = true;
+
+    // Remove the folded width
+    this._renderer.removeStyle(this._elementRef.nativeElement, 'width');
+    this._renderer.removeStyle(this._elementRef.nativeElement, 'min-width');
+    this._renderer.removeStyle(this._elementRef.nativeElement, 'max-width');
+
+    // Mark for check
+    this._changeDetectorRef.markForCheck();
   }
 }

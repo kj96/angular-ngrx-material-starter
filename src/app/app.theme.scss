@@ -82,16 +82,15 @@ $typography: mat-typography-config(
 // -----------------------------------------------------------------------------------------------------
 
 // Import app and page component themes here to enable theming for them
-// Layout
-// Apps
+@import "src/app/layout/components/toolbar/toolbar.theme";
+@import "src/app/layout/components/navigation/navigation.theme";
 
 // Define a mixin for easier access
 @mixin components-theme($theme) {
   // Layout
-
-  // Security
-
-  // Apps
+  @include robo-layout-toolbar-theme($theme);
+  @include robo-layout-navigation-theme($theme);
+  //
 }
 
 // -----------------------------------------------------------------------------------------------------

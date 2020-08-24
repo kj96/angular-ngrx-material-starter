@@ -16,9 +16,9 @@
 
     <div id="container-1" class="container">
       <!-- NAVBAR: Left -->
-<!--      <ng-container *ngIf="(navbar$ | async).position === 'left'">-->
-<!--        <ng-container *ngTemplateOutlet="leftNavbarTpl"></ng-container>-->
-<!--      </ng-container>-->
+      <ng-container *ngIf="(navbar$ | async).position === 'left'">
+        <ng-container *ngTemplateOutlet="leftNavbarTpl"></ng-container>
+      </ng-container>
       <!-- / NAVBAR: Left -->
 
       <div id="container-2" class="container">
@@ -97,16 +97,6 @@
 
       [folded]="navbar.folded"
       [lockedOpen]="'gt-md'"
-    >
-      <robo-layout-navigation class="left-navigation"></robo-layout-navigation>
-    </robo-sidebar>
-
-    <robo-sidebar
-      name="navbar"
-      class="navbar-sidebar"
-
-      [folded]="navbar.folded"
-      lockedOpen="gt-md"
     >
       <robo-layout-navigation class="left-navigation"></robo-layout-navigation>
     </robo-sidebar>

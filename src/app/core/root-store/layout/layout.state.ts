@@ -27,7 +27,7 @@ export const initialStateLayout: LayoutState = {
   navigation: {
     customBackgroundColor: false,
     headerBackground: 'navy-700',
-    barBackground: 'navy-700',
+    barBackground: 'navy-400',
     navbar: {
       folded: false,
       position: 'left'

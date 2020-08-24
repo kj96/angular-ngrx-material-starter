@@ -1,26 +1,40 @@
 <!-- HEADER -->
 <div class="navbar-top" [ngClass]="(customBackgroundColor$ | async) && (headerBackground$ | async)">
-  <div class="top-row">
-    <!-- LOGO -->
-    <div class="logo">
-      <img class="logo-icon" src="assets/images/droid.png">
-    </div>
-    <!-- / LOGO -->
+  <div class="logo">
+    <img class="logo-icon" src="assets/images/droid.png">
+    <span class="logo-text">ROBO</span>
+  </div>
 
-    <!-- BUTTONS -->
-    <div class="buttons">
-      <button mat-icon-button class="toggle-sidebar-folded secondary-text" (click)="toggleSidebarFolded()">
-        <mat-icon class="s-28">menu</mat-icon>
-      </button>
+  <div class="buttons">
+    <button mat-icon-button class="toggle-sidebar-folded" (click)="toggleSidebarFolded()">
+      <mat-icon class="secondary-text">menu</mat-icon>
+    </button>
 
-      <button mat-icon-button class="toggle-sidebar-opened" (click)="toggleSidebarOpened()">
-        <mat-icon class="s-28">arrow_back</mat-icon>
-      </button>
-    </div>
-    <!-- / BUTTONS -->
+    <button mat-icon-button class="toggle-sidebar-opened" (click)="toggleSidebarOpened()">
+      <mat-icon class="secondary-text">arrow_back</mat-icon>
+    </button>
+
   </div>
 </div>
 
-<!-- NAVBAR -->
-<robo-layout-navigation-navbar class="" [pages] = "navBar$ | async"></robo-layout-navigation-navbar>
-<!-- / NAVBAR -->
+<div
+  class="navbar-scroll-container"
+  [ngClass]="(customBackgroundColor$ | async) && (barBackground$ | async)"
+  [perfectScrollbar]="{suppressScrollX: true}"
+>
+  <div class="user" fxLayout="column" [ngClass]="(customBackgroundColor$ | async) && (headerBackground$ | async)">
+
+    <div class="h3 username">Yurii Derevenko</div>
+    <div class="h5 email hint-text mt-8">derevenkoyurec@gmailc.com</div>
+
+    <div class="avatar-container"  [ngClass]="(customBackgroundColor$ | async) && (headerBackground$ | async)">
+      <img class="avatar" src="assets/images/avatar-preview.png">
+    </div>
+  </div>
+
+  <!-- NAVBAR -->
+  <div class="navbar-content">
+    <robo-layout-navigation-navbar class="material2" [pages]="navBar$ | async"></robo-layout-navigation-navbar>
+  </div>
+  <!-- / NAVBAR -->
+</div>
