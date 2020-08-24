@@ -93,7 +93,8 @@
           }
         }
       }
-    }},
+    }
+  },
   "defaultProject": "angular-robo-starter",
   "cli": {
     "analytics": false
