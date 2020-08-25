@@ -6,10 +6,9 @@ export class CommonKeysPipe implements PipeTransform {
    * Transform
    *
    * @param value
-   * @param {string[]} args
-   * @returns {any}
+   * @returns
    */
-  transform(value: any, args: string[]): any {
+  transform(value: any): any {
     const keys: any[] = [];
 
     for (const key in value) {
