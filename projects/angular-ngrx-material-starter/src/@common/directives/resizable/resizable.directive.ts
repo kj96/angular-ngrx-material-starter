@@ -1,4 +1,4 @@
-// outer imports
+// outer
 import {
   AfterViewChecked,
   AfterViewInit,
@@ -7,10 +7,10 @@ import {
   EventEmitter,
   Directive,
   Input,
-  Output,
+  Output
 } from '@angular/core';
 import { MediaObserver } from '@angular/flex-layout';
-// imports end
+// end
 
 @Directive({ selector: '[commonResizable]' })
 export class CommonResizableDirective implements AfterViewInit, OnDestroy, AfterViewChecked {
@@ -39,7 +39,7 @@ export class CommonResizableDirective implements AfterViewInit, OnDestroy, After
   // ---------------------------------------------------------------------------
 
   ngAfterViewChecked(): void {
-    if(this.el.nativeElement.classList.contains('locked-open')) {
+    if (this.el.nativeElement.classList.contains('locked-open')) {
       this.newWidth(this.resizableWidth);
     }
   }
