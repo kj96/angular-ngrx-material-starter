@@ -26,14 +26,10 @@ import { Store } from '@ngrx/store';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavVerticalCollapsableComponent implements OnInit, OnDestroy {
-  @Input()
-  item: any;
+  @Input() item: any;
 
-  @HostBinding('class')
-  classes = 'nav-collapsable nav-item';
-
-  @HostBinding('class.open')
-  public isOpen = false;
+  @HostBinding('class') classes = 'nav-collapsable nav-item';
+  @HostBinding('class.open') public isOpen = false;
 
   isFolded$: Observable<any>;
   // Private
@@ -42,9 +38,9 @@ export class NavVerticalCollapsableComponent implements OnInit, OnDestroy {
   /**
    * Constructor
    *
-   * @param {ChangeDetectorRef} _changeDetectorRef
-   * @param {Router} _router
-   * @param {Store<RootStoreState>} _store
+   * @param _changeDetectorRef
+   * @param _router
+   * @param _store
    *
    */
   constructor(

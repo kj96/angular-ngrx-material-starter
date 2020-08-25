@@ -7,9 +7,9 @@
 
     <div class="children" [@slideInOut]="isOpen">
       <ng-container *ngFor="let item of item.children">
-        <vertical-item *ngIf="item.type == 'item'" [item]="item"></vertical-item>
-        <vertical-collapsable *ngIf="item.type == 'collapsable'" [item]="item"></vertical-collapsable>
-        <vertical-group *ngIf="item.type == 'group'" [item]="item"></vertical-group>
+        <anms-vertical-item *ngIf="item.type == 'item'" [item]="item"></anms-vertical-item>
+        <anms-vertical-collapsable *ngIf="item.type == 'collapsable'" [item]="item"></anms-vertical-collapsable>
+        <anms-vertical-group *ngIf="item.type == 'group'" [item]="item"></anms-vertical-group>
       </ng-container>
     </div>
   </ng-container>

@@ -26,13 +26,10 @@ export class NavVerticalItemComponent implements OnInit {
   /**
    * Constructor
    *
-   * @param {Store<RootStoreState>} _store
+   * @param  _store
    *
    */
   constructor(private _store: Store<RootStoreState>) {}
-  // ---------------------------------------------------------------------------
-  // @ Lifecycle hooks
-  // ---------------------------------------------------------------------------
 
   /**
    * On init

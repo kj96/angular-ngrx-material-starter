@@ -1,11 +1,11 @@
-// outer imports
+// outer
 import {
   ChangeDetectionStrategy,
   Component,
   HostBinding,
   Input
 } from '@angular/core';
-// imports end
+// end
 
 @Component({
   selector: 'anms-vertical-group',
@@ -14,15 +14,6 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class NavVerticalGroupComponent {
-  @HostBinding('class')
-  classes = 'nav-group nav-item';
-
-  @Input()
-  item: any;
-
-  /**
-   * Constructor
-   */
-
-  constructor() {}
+  @HostBinding('class') classes = 'nav-group nav-item';
+  @Input() item: any;
 }
