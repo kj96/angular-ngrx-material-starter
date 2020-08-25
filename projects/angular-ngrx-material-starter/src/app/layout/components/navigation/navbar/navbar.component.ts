@@ -10,6 +10,4 @@ import { Component, Input, ViewEncapsulation } from '@angular/core';
 })
 export class NavbarComponent {
   @Input() pages: any;
-
-  constructor() {}
 }

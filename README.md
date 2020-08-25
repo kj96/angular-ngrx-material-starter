@@ -4,7 +4,7 @@ by [@derevenkoyurii](https://www.linkedin.com/in/yurii-derevenko-747967125/)
 ## Getting started
 
 ```bash
-git clone https://github.com/derevenkoyurii/angular-robo-starter.git new-project
+git clone https://github.com/derevenkoyurii/angular-ngrx-material-starter.git new-project
 cd new-project
 npm install
 npm start
