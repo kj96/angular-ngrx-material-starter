@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import {CommonSidebarService } from '@common';
 @Component({
-    selector   : 'carded-right-sidebar-tabbed-1',
+    selector   : 'anms-carded-right-sidebar-tabbed-1',
     templateUrl: './right-sidebar-tabbed-1.component.html',
     styleUrls  : ['./right-sidebar-tabbed-1.component.scss']
 })

@@ -1,30 +1,28 @@
 import { Component } from '@angular/core';
+import { CommonSidebarService } from '@common';
 
-import {CommonSidebarService } from '@common';
 @Component({
-    selector   : 'carded-left-sidebar-tabbed-1',
-    templateUrl: './left-sidebar-tabbed-1.component.html',
-    styleUrls  : ['./left-sidebar-tabbed-1.component.scss']
+  selector: 'anms-carded-left-sidebar-tabbed-1',
+  templateUrl: './left-sidebar-tabbed-1.component.html',
+  styleUrls: ['./left-sidebar-tabbed-1.component.scss']
 })
-export class CardedLeftSidebarTabbed1Component
-{
-    /**
-     * Constructor
-     *
-     * @param _sidebarService
+export class CardedLeftSidebarTabbed1Component {
+  /**
+   * Constructor
+   *
+   * @param _sidebarService
+   */
+  constructor(
+    private _sidebarService: CommonSidebarService
+  ) {
+  }
 
-*/
-    constructor(
-        private _sidebarService: CommonSidebarService
-    )
-    {
-    }/**
-     * Toggle sidebar
-     *
-     * @param name
-     */
-    toggleSidebar(name): void
-    {
-        this._sidebarService.getSidebar(name).toggleOpen();
-    }
+  /**
+   * Toggle sidebar
+   *
+   * @param name
+   */
+  toggleSidebar(name): void {
+    this._sidebarService.getSidebar(name).toggleOpen();
+  }
 }

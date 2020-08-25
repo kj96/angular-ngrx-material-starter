@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import {CommonSidebarService } from '@common';
 @Component({
-    selector   : 'simple-left-sidebar-1',
+    selector   : 'anms-simple-left-sidebar-1',
     templateUrl: './left-sidebar-1.component.html',
     styleUrls  : ['./left-sidebar-1.component.scss']
 })

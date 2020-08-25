@@ -15,13 +15,13 @@ import './prism-languages';
   template: '',
   styleUrls: ['./highlight.component.scss']
 })
-export class RoboHighlightComponent implements OnInit, OnDestroy {
+export class HighlightComponent implements OnInit, OnDestroy {
   // Source
   @ContentChild('source', { static: true }) source: ElementRef;
   // Lang
-  @Input('lang') lang: string;
+  @Input() lang: string;
   // Path
-  @Input('path') path: string;
+  @Input() path: string;
 
   // Private
   private _unsubscribeAll: Subject<any>;
@@ -88,7 +88,7 @@ export class RoboHighlightComponent implements OnInit, OnDestroy {
 
     // Remove the first and the last line of the source
     // code if they are blank lines. This way, the html
-    // can be formatted properly while using Robo-highlight
+    // can be formatted properly while using -highlight
     // component
     if (!sourceLines[0].trim()) {
       sourceLines.shift();

@@ -22,7 +22,7 @@ export class SafeDecimalPipe implements PipeTransform {
     if (this.isNumber(value)) {
       valueToTransform = value;
     } else {
-      const attemptedValue = value*1;
+      const attemptedValue = value * 1;
       if (this.isNumber(attemptedValue)) {
         valueToTransform = attemptedValue;
       }
@@ -36,6 +36,6 @@ export class SafeDecimalPipe implements PipeTransform {
   }
 
   private isNumber(value: any): boolean {
-    return  isNumber(value) && isFinite(value);
+    return isNumber(value) && isFinite(value);
   }
 }

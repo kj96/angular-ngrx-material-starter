@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 
 import {CommonSidebarService } from '@common';
 @Component({
-    selector   : 'simple-right-sidebar-4',
+    selector   : 'anms-simple-right-sidebar-4',
     templateUrl: './right-sidebar-3.component.html',
     styleUrls  : ['./right-sidebar-3.component.scss']
 })

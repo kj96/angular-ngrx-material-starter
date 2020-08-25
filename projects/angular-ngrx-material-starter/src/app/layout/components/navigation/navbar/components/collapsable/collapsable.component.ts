@@ -19,7 +19,7 @@ import { Store } from '@ngrx/store';
 // imports end
 
 @Component({
-  selector: 'vertical-collapsable',
+  selector: 'anms-vertical-collapsable',
   templateUrl: './collapsable.component.html',
   styleUrls: ['./collapsable.component.scss'],
   animations: commonAnimations,

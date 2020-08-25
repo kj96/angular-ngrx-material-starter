@@ -22,7 +22,7 @@ import { take } from 'rxjs/operators';
 // imports end
 
 @Component({
-  selector: 'mat-select-search',
+  selector: 'anms-mat-select-search',
   templateUrl: './mat-select-search.component.html',
   styleUrls: ['./mat-select-search.component.scss'],
   providers: [
@@ -70,10 +70,6 @@ export class MatSelectSearchComponent
 
   onChange: Function = (_: any) => {};
   onTouched: Function = (_: any) => {};
-
-  // ---------------------------------------------------------------------------
-  // @ Lifecycle hooks
-  // ---------------------------------------------------------------------------
 
   /**
    * On init
@@ -146,14 +142,15 @@ export class MatSelectSearchComponent
   /**
    * Handles the key down event with MatSelect.
    * Allows e.g. selecting with enter key, navigation with arrow keys, etc.
-   * @param {KeyboardEvent} event
+   *
+   * @param  event
    * @private
    */
   _handleKeydown(event: KeyboardEvent): void {
-    if (event.keyCode === 32) {
-      // do not propagate spaces to MatSelect, as this would select the currently active option
-      event.stopPropagation();
-    }
+    // if (event.altKeykey === 32) {
+    //   // do not propagate spaces to MatSelect, as this would select the currently active option
+    //   event.stopPropagation();
+    // }
   }
 
   writeValue(value: string): void {
@@ -231,12 +228,12 @@ export class MatSelectSearchComponent
     }
     const overlayClass = 'cdk-overlay-pane-select-search';
     // TODO CLEAR SUBSCRIBE
-    this.matSelect.overlayDir.attach.pipe().subscribe(() => {
-      // note: this is hacky, but currently there is no better way to do this
-      this.searchSelectInput.nativeElement.parentElement.parentElement.parentElement.parentElement.parentElement.classList.add(
-        overlayClass
-      );
-    });
+    // this.matSelect.overlayDir.attach.pipe().subscribe(() => {
+    //   // note: this is hacky, but currently there is no better way to do this
+    //   this.searchSelectInput.nativeElement.parentElement.parentElement.parentElement.parentElement.parentElement.classList.add(
+    //     overlayClass
+    //   );
+    // });
 
     this.overlayClassSet = true;
   }

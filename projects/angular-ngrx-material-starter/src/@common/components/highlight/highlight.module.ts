@@ -1,15 +1,15 @@
 // outer
 import { NgModule } from '@angular/core';
 // inner
-import { RoboHighlightComponent } from './highlight.component';
+import { HighlightComponent } from './highlight.component';
 // end
 
 @NgModule({
   declarations: [
-    RoboHighlightComponent
+    HighlightComponent
   ],
   exports: [
-    RoboHighlightComponent
+    HighlightComponent
   ]
 })
 export class HighlightModule {

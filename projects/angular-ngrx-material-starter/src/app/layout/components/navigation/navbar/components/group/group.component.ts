@@ -8,7 +8,7 @@ import {
 // imports end
 
 @Component({
-  selector: 'vertical-group',
+  selector: 'anms-vertical-group',
   templateUrl: './group.component.html',
   styleUrls: ['./group.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

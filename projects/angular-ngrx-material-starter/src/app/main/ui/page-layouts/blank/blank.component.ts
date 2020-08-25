@@ -3,7 +3,7 @@ import { Component } from '@angular/core';
 // end
 
 @Component({
-  selector: 'blank',
+  selector: 'anms-blank',
   templateUrl: './blank.component.html',
   styleUrls: ['./blank.component.scss']
 })

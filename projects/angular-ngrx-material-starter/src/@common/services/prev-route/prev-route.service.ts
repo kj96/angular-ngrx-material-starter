@@ -24,7 +24,7 @@ export class PrevRouteService {
 
   public navigateToPreviousRouteWithReload(): Promise<boolean> {
     return this.navigateToPreviousRoute()
-      .then(()=> {
+      .then(() => {
         window.location.reload();
         return true;
       });

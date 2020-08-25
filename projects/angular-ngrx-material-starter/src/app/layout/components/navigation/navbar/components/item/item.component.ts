@@ -12,7 +12,7 @@ import { Observable } from 'rxjs';
 //
 
 @Component({
-  selector: 'vertical-item',
+  selector: 'anms-vertical-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

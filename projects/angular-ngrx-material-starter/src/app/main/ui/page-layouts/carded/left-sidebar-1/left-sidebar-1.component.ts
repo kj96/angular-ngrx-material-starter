@@ -5,7 +5,7 @@ import { CommonSidebarService } from '@common';
 // end
 
 @Component({
-  selector: 'carded-left-sidebar-1',
+  selector: 'anms-carded-left-sidebar-1',
   templateUrl: './left-sidebar-1.component.html',
   styleUrls: ['./left-sidebar-1.component.scss']
 })
